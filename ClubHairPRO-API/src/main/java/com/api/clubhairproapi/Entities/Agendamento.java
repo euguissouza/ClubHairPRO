@@ -9,10 +9,11 @@ public class Agendamento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "usuario_id")
     private Usuario cliente;
 
+    @OneToOne
     @JoinColumn(name = "usuario_email", referencedColumnName = "email") //-> melhor jeito de refenciar uma coluna especifica
     private Usuario emailCliente;
 

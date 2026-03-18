@@ -6,6 +6,8 @@ import com.api.clubhairproapi.Mappers.ProfissionalMapper;
 import com.api.clubhairproapi.Repositories.ProfissionalRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProfissionalService {
     private ProfissionalRepository repository;
@@ -18,8 +20,14 @@ public class ProfissionalService {
 
 
     public Profissional salvaNovoProfissional(ProfissionalDTO dto){
-        Profissional clt = mapper.toEntity(dto);
-        return repository.save(clt);
+            Profissional profissional = mapper.toEntity(dto);
+            return profissional;
     }
+
+    public Profissional find(Profissional profissional){
+        List<Profissional> busca = repository.findAll();
+        return profissional;
+    }
+
 
 }

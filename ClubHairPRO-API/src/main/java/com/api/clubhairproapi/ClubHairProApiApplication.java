@@ -8,6 +8,7 @@ public class ClubHairProApiApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ClubHairProApiApplication.class, args);
+        System.out.println("Serviço online");
     }
 
 }

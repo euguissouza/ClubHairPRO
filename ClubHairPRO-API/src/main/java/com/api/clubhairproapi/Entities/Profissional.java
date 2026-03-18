@@ -11,11 +11,13 @@ public class Profissional {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+
     @Column(nullable = false)
     private String nome;
 
     @Column(nullable = false)
     private Role role;
+
     @Column(unique = true, nullable = false)
     private String cpf;
 

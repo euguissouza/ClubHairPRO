@@ -16,7 +16,7 @@ public class Usuario {
     private UUID id;
     private String nome;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true)
     private String email;
     private Roles role;
     private String contato;

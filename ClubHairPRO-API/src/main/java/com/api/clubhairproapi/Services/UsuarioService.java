@@ -20,6 +20,7 @@ public class UsuarioService {
 
     public Usuario salvaNovoUsuario(UsuarioDTO dto){
         Usuario user = mapper.toEntity(dto);
+        System.out.println(user);
         return repository.save(user);
     }
 

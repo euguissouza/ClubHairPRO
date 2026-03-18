@@ -11,7 +11,6 @@ public interface ProfissionalMapper {
     @Mapping(target = "id", ignore = true)
     Profissional toEntity(ProfissionalDTO dto);
 
-    @Mapping(target = "nome", ignore = false)
-    ProfissionalDTO toDTO(Profissional profissional);
+
 
 }

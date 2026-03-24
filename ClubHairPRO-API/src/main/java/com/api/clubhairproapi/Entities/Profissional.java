@@ -14,8 +14,8 @@ public class Profissional {
     @Column(nullable = false)
     private String nome;
 
-    @Column(nullable = false)
-    private Role role;
+//    @Column(nullable = false)
+//    private Role role;
     @Column(unique = true, nullable = false)
     private String cpf;
 
@@ -36,13 +36,13 @@ public class Profissional {
         this.nome = nome;
     }
 
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
+//    public Role getRole() {
+//        return role;
+//    }
+//
+//    public void setRole(Role role) {
+//        this.role = role;
+//    }
 
     public String getCpf() {
         return cpf;
@@ -57,7 +57,7 @@ public class Profissional {
         return "Profissional{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
-                ", role=" + role +
+//                ", role=" + role +
                 ", cpf='" + cpf + '\'' +
                 '}';
     }

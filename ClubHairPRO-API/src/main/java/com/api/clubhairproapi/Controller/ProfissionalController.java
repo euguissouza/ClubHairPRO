@@ -5,7 +5,10 @@ import com.api.clubhairproapi.Entities.Profissional;
 import com.api.clubhairproapi.Repositories.ProfissionalRepository;
 import com.api.clubhairproapi.Services.ProfissionalService;
 import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/chp/profissional")
@@ -25,9 +28,9 @@ public class ProfissionalController {
     }
 
     @GetMapping("/get")
-    public Profissional busca(Profissional profissional){
-        Profissional find = service.find(profissional);
-        return find;
+    public ResponseEntity<List<Profissional>> busca(Profissional profissional){
+        List<Profissional> find = repository.findAll();
+        return ResponseEntity.ok(find);
     }
 
 }

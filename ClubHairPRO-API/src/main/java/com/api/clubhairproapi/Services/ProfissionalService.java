@@ -21,13 +21,14 @@ public class ProfissionalService {
 
     public Profissional salvaNovoProfissional(ProfissionalDTO dto){
             Profissional profissional = mapper.toEntity(dto);
-            return profissional;
+            System.out.println(profissional);
+            return repository.save(profissional);
     }
 
-    public Profissional find(Profissional profissional){
-        List<Profissional> busca = repository.findAll();
-        return profissional;
-    }
+//    public Profissional find(ProfissionalDTO dto){
+//        List<Profissional> busca = repository.findAll();
+//        return dto;
+//    }
 
 
 }

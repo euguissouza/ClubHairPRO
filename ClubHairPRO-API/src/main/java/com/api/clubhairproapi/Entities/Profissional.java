@@ -1,5 +1,6 @@
 package com.api.clubhairproapi.Entities;
 
+import com.api.clubhairproapi.ENUM.Roles;
 import jakarta.persistence.*;
 
 import javax.management.relation.Role;
@@ -14,8 +15,8 @@ public class Profissional {
     @Column(nullable = false)
     private String nome;
 
-//    @Column(nullable = false)
-//    private Role role;
+    @Column(nullable = false)
+    private Roles role;
     @Column(unique = true, nullable = false)
     private String cpf;
 
@@ -36,13 +37,13 @@ public class Profissional {
         this.nome = nome;
     }
 
-//    public Role getRole() {
-//        return role;
-//    }
-//
-//    public void setRole(Role role) {
-//        this.role = role;
-//    }
+    public Roles getRole() {
+        return role;
+    }
+
+    public void setRole(Roles role) {
+        this.role = role;
+    }
 
     public String getCpf() {
         return cpf;
@@ -57,7 +58,7 @@ public class Profissional {
         return "Profissional{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
-//                ", role=" + role +
+                ", role=" + role +
                 ", cpf='" + cpf + '\'' +
                 '}';
     }

@@ -6,7 +6,10 @@ import com.api.clubhairproapi.Mappers.ProfissionalMapper;
 import com.api.clubhairproapi.Repositories.ProfissionalRepository;
 import org.springframework.stereotype.Service;
 
+import javax.management.relation.Role;
 import java.util.List;
+
+import static com.api.clubhairproapi.ENUM.Roles.PROFISSIONAL;
 
 @Service
 public class ProfissionalService {
@@ -21,13 +24,15 @@ public class ProfissionalService {
 
     public Profissional salvaNovoProfissional(ProfissionalDTO dto){
             Profissional profissional = mapper.toEntity(dto);
-            return profissional;
+            System.out.println(profissional);
+            profissional.setRole(PROFISSIONAL);
+            return repository.save(profissional);
     }
 
-    public Profissional find(Profissional profissional){
-        List<Profissional> busca = repository.findAll();
-        return profissional;
-    }
+//    public Profissional find(ProfissionalDTO dto){
+//        List<Profissional> busca = repository.findAll();
+//        return dto;
+//    }
 
 
 }

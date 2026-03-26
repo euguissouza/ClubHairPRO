@@ -2,6 +2,7 @@ package com.api.clubhairproapi.Services;
 
 import com.api.clubhairproapi.DTO.ProfissionalDTO;
 import com.api.clubhairproapi.Entities.Profissional;
+import com.api.clubhairproapi.Exceptions.CpfError;
 import com.api.clubhairproapi.Mappers.ProfissionalMapper;
 import com.api.clubhairproapi.Repositories.ProfissionalRepository;
 import org.springframework.stereotype.Service;
@@ -24,15 +25,16 @@ public class ProfissionalService {
 
     public Profissional salvaNovoProfissional(ProfissionalDTO dto){
             Profissional profissional = mapper.toEntity(dto);
+
+            if(repository.existsBycpf(profissional.getCpf())) {
+                throw  new CpfError("O CPF informado já foi cadastrado!");
+            }
+
             System.out.println(profissional);
             profissional.setRole(PROFISSIONAL);
             return repository.save(profissional);
     }
-
-//    public Profissional find(ProfissionalDTO dto){
-//        List<Profissional> busca = repository.findAll();
-//        return dto;
-//    }
-
-
 }
+
+
+

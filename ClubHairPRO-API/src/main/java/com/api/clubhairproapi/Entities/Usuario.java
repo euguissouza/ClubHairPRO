@@ -19,6 +19,7 @@ public class Usuario {
     @Column(unique = true, nullable = false)
     private String email;
     private Roles role;
+    @Column(unique = true, nullable = false)
     private String contato;
 
 

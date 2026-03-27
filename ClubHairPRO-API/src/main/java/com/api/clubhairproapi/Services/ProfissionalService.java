@@ -30,8 +30,8 @@ public class ProfissionalService {
                 throw  new CpfError("O CPF informado já foi cadastrado!");
             }
 
-            System.out.println(profissional);
             profissional.setRole(PROFISSIONAL);
+            System.out.println("Profissional cadastrado!" + profissional);
             return repository.save(profissional);
     }
 }

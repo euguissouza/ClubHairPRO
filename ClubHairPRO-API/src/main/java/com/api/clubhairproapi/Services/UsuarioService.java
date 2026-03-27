@@ -1,12 +1,12 @@
 package com.api.clubhairproapi.Services;
 
 import com.api.clubhairproapi.DTO.UsuarioDTO;
+import com.api.clubhairproapi.ENUM.Roles;
 import com.api.clubhairproapi.Entities.Usuario;
+import com.api.clubhairproapi.Exceptions.EmailError;
 import com.api.clubhairproapi.Mappers.UsuarioMapper;
 import com.api.clubhairproapi.Repositories.UsuarioRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class UsuarioService {
@@ -20,11 +20,13 @@ public class UsuarioService {
 
     public Usuario salvaNovoUsuario(UsuarioDTO dto){
         Usuario user = mapper.toEntity(dto);
-        return repository.save(user);
-    }
+        user.setRole(Roles.USER);
 
-    public void buscaBanco(){
-        List<Usuario> find = repository.findAll();
+        if(repository.existsByEmail(user.getEmail())) {
+            throw new EmailError("Já existe um usuário com esse email cadastrado");
+        }
+        System.out.println("Novo cliente adicionado: " + user);
+        return repository.save(user);
     }
 
 }

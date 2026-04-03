@@ -1,5 +1,6 @@
 package com.api.clubhairproapi.Entities;
 
+import com.api.clubhairproapi.ENUM.StatusService;
 import jakarta.persistence.*;
 
 @Entity
@@ -9,18 +10,20 @@ public class Agendamento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "usuario_id")
     private Usuario cliente;
 
-    @OneToOne
-    @JoinColumn(name = "usuario_email", referencedColumnName = "email") //-> melhor jeito de refenciar uma coluna especifica
-    private Usuario emailCliente;
+//    @OneToOne
+//    @JoinColumn(name = "usuario_email", referencedColumnName = "email") //-> melhor jeito de refenciar uma coluna especifica
+//    private Usuario emailCliente;
 
     private String servico;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "profissional_id")
+    private StatusService status;
+
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "profissional_id", unique = false)
     private Profissional profissional;
 
 
@@ -40,13 +43,13 @@ public class Agendamento {
         this.cliente = cliente;
     }
 
-    public Usuario getEmailCliente() {
-        return emailCliente;
-    }
-
-    public void setEmailCliente(Usuario emailCliente) {
-        this.emailCliente = emailCliente;
-    }
+//    public Usuario getEmailCliente() {
+//        return emailCliente;
+//    }
+//
+//    public void setEmailCliente(Usuario emailCliente) {
+//        this.emailCliente = emailCliente;
+//    }
 
     public String getServico() {
         return servico;
@@ -54,6 +57,18 @@ public class Agendamento {
 
     public void setServico(String servico) {
         this.servico = servico;
+    }
+
+    public void setId(Integer id) {
+        Id = id;
+    }
+
+    public StatusService getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusService status) {
+        this.status = status;
     }
 
     public Profissional getProfissional() {
@@ -69,8 +84,9 @@ public class Agendamento {
         return "Agendamento{" +
                 "Id=" + Id +
                 ", cliente=" + cliente +
-                ", emailCliente=" + emailCliente +
+//                ", emailCliente=" + emailCliente +
                 ", servico='" + servico + '\'' +
+                ", status=" + status +
                 ", profissional=" + profissional +
                 '}';
     }

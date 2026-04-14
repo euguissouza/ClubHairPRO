@@ -23,9 +23,9 @@ public class AgendamentoController {
     }
 
     @PostMapping("/post")
-    public ResponseEntity<Agendamento> adicionaBanco(@RequestBody @Valid AgendamentoDTO dto){
+    public ResponseEntity<String> adicionaBanco(@RequestBody @Valid AgendamentoDTO dto){
         Agendamento agendamento = service.novoAgendamento(dto);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Serviço agendado com sucesso!");
+        return ResponseEntity.ok("agendamento realizado com sucesso");
     }
 
     @GetMapping("/get")

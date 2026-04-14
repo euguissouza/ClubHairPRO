@@ -22,7 +22,7 @@ public class AgendamentoService {
         agendamento.setStatus(StatusService.EmAberto);
         System.out.println(agendamento);
         repository.save(agendamento);
-        return
+        return agendamento;
     }
 
 

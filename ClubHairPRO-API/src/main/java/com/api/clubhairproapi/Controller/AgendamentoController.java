@@ -1,6 +1,7 @@
 package com.api.clubhairproapi.Controller;
 
 import com.api.clubhairproapi.DTO.AgendamentoDTO;
+import com.api.clubhairproapi.ENUM.PaymentMethod;
 import com.api.clubhairproapi.Entities.Agendamento;
 import com.api.clubhairproapi.Repositories.AgendamentoRepository;
 import com.api.clubhairproapi.Services.AgendamentoService;

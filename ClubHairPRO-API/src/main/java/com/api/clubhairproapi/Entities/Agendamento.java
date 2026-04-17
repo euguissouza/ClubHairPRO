@@ -1,7 +1,11 @@
 package com.api.clubhairproapi.Entities;
 
+import com.api.clubhairproapi.ENUM.PaymentMethod;
 import com.api.clubhairproapi.ENUM.StatusService;
 import jakarta.persistence.*;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "agendamentos")
@@ -14,9 +18,11 @@ public class Agendamento {
     @JoinColumn(name = "usuario_id")
     private Usuario cliente;
 
-//    @OneToOne
-//    @JoinColumn(name = "usuario_email", referencedColumnName = "email") //-> melhor jeito de refenciar uma coluna especifica
-//    private Usuario emailCliente;
+    private LocalDate dataAgendamento;
+
+    private LocalTime horaAgendamento;
+
+    private PaymentMethod payment;
 
     private String servico;
 
@@ -43,13 +49,29 @@ public class Agendamento {
         this.cliente = cliente;
     }
 
-//    public Usuario getEmailCliente() {
-//        return emailCliente;
-//    }
-//
-//    public void setEmailCliente(Usuario emailCliente) {
-//        this.emailCliente = emailCliente;
-//    }
+    public LocalDate getDataAgendamento() {
+        return dataAgendamento;
+    }
+
+    public void setDataAgendamento(LocalDate dataAgendamento) {
+        this.dataAgendamento = dataAgendamento;
+    }
+
+    public LocalTime getHoraAgendamento() {
+        return horaAgendamento;
+    }
+
+    public void setHoraAgendamento(LocalTime horaAgendamento) {
+        this.horaAgendamento = horaAgendamento;
+    }
+
+    public PaymentMethod getPayment() {
+        return payment;
+    }
+
+    public void setPayment(PaymentMethod payment) {
+        this.payment = payment;
+    }
 
     public String getServico() {
         return servico;

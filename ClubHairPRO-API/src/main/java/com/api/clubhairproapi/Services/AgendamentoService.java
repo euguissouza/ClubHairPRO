@@ -27,7 +27,8 @@ public class AgendamentoService {
     public Agendamento novoAgendamento(AgendamentoDTO dto) {
         Agendamento agendamento = mapper.toEntity(dto);
         agendamento.setStatus(StatusService.EmAberto);
-        System.out.println(agendamento);
+        agendamento.setDataAgendamento(dto.getDataAgendamento());   // -> MapStruct não mapeia o LocalDate
+        System.out.println(agendamento.getDataAgendamento());
         repository.save(agendamento);
         return agendamento;
     }
@@ -35,18 +36,18 @@ public class AgendamentoService {
 
 
     //projetado para consultar se o horario e dia estara livre (ainda nao foi testado!)
-    @Transactional
-    public void ConsultaVaga(AgendamentoDTO dto) throws Exception {
-        List<Agendamento> agendamentos = repository.findAll();
-        for (Agendamento existente : agendamentos) {
-            if (existente.getHoraAgendamento()
-                    .equals(novoAgendamento(dto).getHoraAgendamento()) && existente.getDataAgendamento()
-                    .equals(novoAgendamento(dto).getDataAgendamento())) {
-                throw new Exception("Horário Indisponivel");
-            }
-        }
-
-    }
+//    @Transactional
+//    public void ConsultaVaga(AgendamentoDTO dto) throws Exception {
+//        List<Agendamento> agendamentos = repository.findAll();
+//        for (Agendamento existente : agendamentos) {
+//            if (existente.getHoraAgendamento()
+//                    .equals(novoAgendamento(dto).getHoraAgendamento()) && existente.getDataAgendamento()
+//                    .equals(novoAgendamento(dto).getDataAgendamento())) {
+//                throw new Exception("Horário Indisponivel");
+//            }
+//        }
+//
+//    }
 
 
 

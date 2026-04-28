@@ -25,7 +25,7 @@ public class AgendamentoController {
 
     @PostMapping("/post")
     public ResponseEntity<String> adicionaBanco(@RequestBody @Valid AgendamentoDTO dto) throws Exception{
-        service.ConsultaVaga(dto);
+        //service.ConsultaVaga(dto);
         Agendamento agendamento = service.novoAgendamento(dto);
         return ResponseEntity.ok("agendamento realizado com sucesso");
     }

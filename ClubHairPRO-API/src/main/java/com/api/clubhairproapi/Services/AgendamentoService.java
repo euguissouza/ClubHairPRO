@@ -27,15 +27,16 @@ public class AgendamentoService {
     public Agendamento novoAgendamento(AgendamentoDTO dto) {
         Agendamento agendamento = mapper.toEntity(dto);
         agendamento.setStatus(StatusService.EmAberto);
-
         System.out.println(agendamento);
         repository.save(agendamento);
         return agendamento;
     }
 
 
+
+    //projetado para consultar se o horario e dia estara livre (ainda nao foi testado!)
     @Transactional
-    public void CutTools(AgendamentoDTO dto) throws Exception {
+    public void ConsultaVaga(AgendamentoDTO dto) throws Exception {
         List<Agendamento> agendamentos = repository.findAll();
         for (Agendamento existente : agendamentos) {
             if (existente.getHoraAgendamento()
@@ -44,12 +45,6 @@ public class AgendamentoService {
                 throw new Exception("Horário Indisponivel");
             }
         }
-
-
-
-
-
-
 
     }
 

@@ -1,6 +1,7 @@
 package com.api.clubhairproapi.Controller;
 
 import com.api.clubhairproapi.DTO.AgendamentoDTO;
+import com.api.clubhairproapi.ENUM.PaymentMethod;
 import com.api.clubhairproapi.Entities.Agendamento;
 import com.api.clubhairproapi.Repositories.AgendamentoRepository;
 import com.api.clubhairproapi.Services.AgendamentoService;
@@ -23,7 +24,8 @@ public class AgendamentoController {
     }
 
     @PostMapping("/post")
-    public ResponseEntity<String> adicionaBanco(@RequestBody @Valid AgendamentoDTO dto){
+    public ResponseEntity<String> adicionaBanco(@RequestBody @Valid AgendamentoDTO dto) throws Exception{
+        //service.ConsultaVaga(dto);
         Agendamento agendamento = service.novoAgendamento(dto);
         return ResponseEntity.ok("agendamento realizado com sucesso");
     }

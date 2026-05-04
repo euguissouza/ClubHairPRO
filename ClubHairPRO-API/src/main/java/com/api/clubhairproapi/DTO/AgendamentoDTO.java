@@ -13,8 +13,8 @@ public class AgendamentoDTO {
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dataAgendamento;
-//    @JsonFormat(pattern = "HH:mm:ss")
-//    private LocalTime horaAgendamento;
+    @JsonFormat(pattern = "HH:mm:ss")
+    private LocalTime horaAgendamento;
 
     private String servico;
     private Profissional profissional;
@@ -39,13 +39,13 @@ public class AgendamentoDTO {
         this.dataAgendamento = dataAgendamento;
     }
 
-//    public LocalTime getHoraAgendamento() {
-//        return horaAgendamento;
-//    }
-//
-//    public void setHoraAgendamento(LocalTime horaAgendamento) {
-//        this.horaAgendamento = horaAgendamento;
-//    }
+   public LocalTime getHoraAgendamento() {
+       return horaAgendamento;
+   }
+
+   public void setHoraAgendamento(LocalTime horaAgendamento) {
+       this.horaAgendamento = horaAgendamento;
+   }
 
     public void setEmailCliente(Usuario emailCliente) {
         this.emailCliente = emailCliente;

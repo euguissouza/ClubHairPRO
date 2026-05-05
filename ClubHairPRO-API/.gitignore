@@ -13,6 +13,14 @@ target/
 .springBeans
 .sts4-cache
 
+# Banco de Dados H2 (Arquivos locais)
+*.mv.db
+*.trace.db
+
+# Pastas de dados específicas
+ClubHairPRO-API/data/
+clubhairdb.mv.db/
+
 ### IntelliJ IDEA ###
 .idea
 *.iws

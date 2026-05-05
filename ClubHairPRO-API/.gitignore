@@ -18,7 +18,7 @@ target/
 *.trace.db
 
 # Pastas de dados específicas
-ClubHairPRO-API/data/
+./ClubHairPRO-API/data/
 clubhairdb.mv.db/
 
 ### IntelliJ IDEA ###

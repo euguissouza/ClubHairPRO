@@ -2,10 +2,20 @@ package com.api.clubhairproapi.DTO;
 
 import com.api.clubhairproapi.Entities.Profissional;
 import com.api.clubhairproapi.Entities.Usuario;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class AgendamentoDTO {
     private Usuario cliente;
     private Usuario emailCliente;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate dataAgendamento;
+    @JsonFormat(pattern = "HH:mm:ss")
+    private LocalTime horaAgendamento;
+
     private String servico;
     private Profissional profissional;
 
@@ -20,6 +30,22 @@ public class AgendamentoDTO {
     public Usuario getEmailCliente() {
         return emailCliente;
     }
+
+    public LocalDate getDataAgendamento() {
+        return dataAgendamento;
+    }
+
+    public void setDataAgendamento(LocalDate dataAgendamento) {
+        this.dataAgendamento = dataAgendamento;
+    }
+
+   public LocalTime getHoraAgendamento() {
+       return horaAgendamento;
+   }
+
+   public void setHoraAgendamento(LocalTime horaAgendamento) {
+       this.horaAgendamento = horaAgendamento;
+   }
 
     public void setEmailCliente(Usuario emailCliente) {
         this.emailCliente = emailCliente;

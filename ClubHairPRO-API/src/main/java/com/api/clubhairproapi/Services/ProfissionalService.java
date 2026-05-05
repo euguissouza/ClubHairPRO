@@ -11,6 +11,7 @@ import javax.management.relation.Role;
 import java.util.List;
 
 import static com.api.clubhairproapi.ENUM.Roles.PROFISSIONAL;
+import static com.api.clubhairproapi.ENUM.StatusProfissional.Livre;
 
 @Service
 public class ProfissionalService {
@@ -29,7 +30,7 @@ public class ProfissionalService {
             if(repository.existsBycpf(profissional.getCpf())) {
                 throw  new CpfError("O CPF informado já foi cadastrado!");
             }
-
+            profissional.setStatus(Livre);
             profissional.setRole(PROFISSIONAL);
             System.out.println("Profissional cadastrado!" + profissional);
             return repository.save(profissional);

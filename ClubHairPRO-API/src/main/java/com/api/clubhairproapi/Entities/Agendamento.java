@@ -20,9 +20,9 @@ public class Agendamento {
 
     private LocalDate dataAgendamento;
 
-//    private LocalTime horaAgendamento;
+    private LocalTime horaAgendamento;
 
-    //private PaymentMethod payment; -> Incluir depois!!
+    // private PaymentMethod payment; // -> Incluir depois!!
 
     private String servico;
 
@@ -57,13 +57,13 @@ public class Agendamento {
         this.dataAgendamento = dataAgendamento;
     }
 
-//    public LocalTime getHoraAgendamento() {
-//        return horaAgendamento;
-//    }
-//
-//    public void setHoraAgendamento(LocalTime horaAgendamento) {
-//        this.horaAgendamento = horaAgendamento;
-//    }
+   public LocalTime getHoraAgendamento() {
+       return horaAgendamento;
+   }
+
+   public void setHoraAgendamento(LocalTime horaAgendamento) {
+       this.horaAgendamento = horaAgendamento;
+   }
 
 //    public PaymentMethod getPayment() {
 //        return payment;
@@ -107,7 +107,7 @@ public class Agendamento {
                 "Id=" + Id +
                 ", cliente=" + cliente +
                 ", dataAgendamento=" + dataAgendamento +
-//                ", horaAgendamento=" + horaAgendamento +
+                ", horaAgendamento=" + horaAgendamento +
                 ", servico='" + servico + '\'' +
                 ", status=" + status +
                 ", profissional=" + profissional +

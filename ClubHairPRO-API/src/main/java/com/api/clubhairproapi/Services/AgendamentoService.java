@@ -27,7 +27,8 @@ public class AgendamentoService {
     public Agendamento novoAgendamento(AgendamentoDTO dto) {
         Agendamento agendamento = mapper.toEntity(dto);
         agendamento.setStatus(StatusService.EmAberto);
-        agendamento.setDataAgendamento(dto.getDataAgendamento());   // -> MapStruct não mapeia o LocalDate
+        agendamento.setDataAgendamento(dto.getDataAgendamento());  // -> MapStruct não mapeia o LocalDate
+        agendamento.setHoraAgendamento(dto.getHoraAgendamento());  // -> MapStruct não mapeia o LocalTime
         System.out.println(agendamento.getDataAgendamento());
         repository.save(agendamento);
         return agendamento;

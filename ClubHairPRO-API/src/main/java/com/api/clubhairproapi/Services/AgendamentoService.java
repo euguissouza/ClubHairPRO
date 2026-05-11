@@ -6,6 +6,7 @@ import com.api.clubhairproapi.ENUM.StatusProfissional;
 import com.api.clubhairproapi.ENUM.StatusService;
 import com.api.clubhairproapi.Entities.Agendamento;
 import com.api.clubhairproapi.Entities.Profissional;
+import com.api.clubhairproapi.Exceptions.HoraIndisponivelError;
 import com.api.clubhairproapi.Mappers.AgendamentoMapper;
 import com.api.clubhairproapi.Repositories.AgendamentoRepository;
 import org.springframework.stereotype.Service;
@@ -37,23 +38,18 @@ public class AgendamentoService {
 
 
     //projetado para consultar se o horario e dia estara livre (ainda nao foi testado!)
-//    @Transactional
-//    public void ConsultaVaga(AgendamentoDTO dto) throws Exception {
-//        List<Agendamento> agendamentos = repository.findAll();
-//        for (Agendamento existente : agendamentos) {
-//            if (existente.getHoraAgendamento()
-//                    .equals(novoAgendamento(dto).getHoraAgendamento()) && existente.getDataAgendamento()
-//                    .equals(novoAgendamento(dto).getDataAgendamento())) {
-//                throw new Exception("Horário Indisponivel");
-//            }
-//        }
-//
-//    }
+    public void consultaVaga(AgendamentoDTO dto) throws Exception{
+        Agendamento novo = novoAgendamento(dto);
 
+        boolean consultaHora = repository.horaAgendamento(novo.getDataAgendamento(), novo.getHoraAgendamento());
 
-
-
+        if(consultaHora){
+            throw new HoraIndisponivelError("Horario indisponivel");
+        }
     }
+
+
+}
 
 
 

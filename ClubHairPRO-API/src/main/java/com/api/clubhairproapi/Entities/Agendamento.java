@@ -5,6 +5,7 @@ import com.api.clubhairproapi.ENUM.StatusService;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Entity
@@ -18,9 +19,7 @@ public class Agendamento {
     @JoinColumn(name = "usuario_id")
     private Usuario cliente;
 
-    private LocalDate dataAgendamento;
-
-    private LocalTime horaAgendamento;
+    private LocalDateTime marcarServico;
 
     // private PaymentMethod payment; // -> Incluir depois!!
 
@@ -49,21 +48,15 @@ public class Agendamento {
         this.cliente = cliente;
     }
 
-    public LocalDate getDataAgendamento() {
-        return dataAgendamento;
+
+    public LocalDateTime getMarcarServico() {
+        return marcarServico;
     }
 
-    public void setDataAgendamento(LocalDate dataAgendamento) {
-        this.dataAgendamento = dataAgendamento;
+    public void setMarcarServico(LocalDateTime marcarServico) {
+        this.marcarServico = marcarServico;
     }
-
-   public LocalTime getHoraAgendamento() {
-       return horaAgendamento;
-   }
-
-   public void setHoraAgendamento(LocalTime horaAgendamento) {
-       this.horaAgendamento = horaAgendamento;
-   }
+   
 
 //    public PaymentMethod getPayment() {
 //        return payment;
@@ -106,11 +99,12 @@ public class Agendamento {
         return "Agendamento{" +
                 "Id=" + Id +
                 ", cliente=" + cliente +
-                ", dataAgendamento=" + dataAgendamento +
-                ", horaAgendamento=" + horaAgendamento +
+                ", dataHora=" + marcarServico +
                 ", servico='" + servico + '\'' +
                 ", status=" + status +
                 ", profissional=" + profissional +
                 '}';
     }
+
+
 }

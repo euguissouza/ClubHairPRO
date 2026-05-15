@@ -8,5 +8,5 @@ import java.time.LocalTime;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AgendamentoRepository extends JpaRepository<Agendamento, Integer> {
-    boolean horaAgendamento(LocalDate dataAgendamento, LocalTime horaAgendamento);
+   // boolean horaAgendamento(LocalDate dataAgendamento, LocalTime horaAgendamento);
 }

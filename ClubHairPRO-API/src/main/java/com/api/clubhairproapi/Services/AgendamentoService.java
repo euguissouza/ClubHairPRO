@@ -1,17 +1,13 @@
 package com.api.clubhairproapi.Services;
 
 import com.api.clubhairproapi.DTO.AgendamentoDTO;
-import com.api.clubhairproapi.ENUM.PaymentMethod;
-import com.api.clubhairproapi.ENUM.StatusProfissional;
 import com.api.clubhairproapi.ENUM.StatusService;
 import com.api.clubhairproapi.Entities.Agendamento;
-import com.api.clubhairproapi.Entities.Profissional;
 import com.api.clubhairproapi.Exceptions.HoraIndisponivelError;
 import com.api.clubhairproapi.Mappers.AgendamentoMapper;
 import com.api.clubhairproapi.Repositories.AgendamentoRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.handler.HandlerExceptionResolverComposite;
 
 import java.util.List;
 
@@ -28,9 +24,7 @@ public class AgendamentoService {
     public Agendamento novoAgendamento(AgendamentoDTO dto) {
         Agendamento agendamento = mapper.toEntity(dto);
         agendamento.setStatus(StatusService.EmAberto);
-        agendamento.setDataAgendamento(dto.getDataAgendamento());  // -> MapStruct não mapeia o LocalDate
-        agendamento.setHoraAgendamento(dto.getHoraAgendamento());  // -> MapStruct não mapeia o LocalTime
-        System.out.println(agendamento.getDataAgendamento());
+        agendamento.setMarcarServico(dto.getMarcarServico()); // -> MapStruct nao mapeia!!!
         repository.save(agendamento);
         return agendamento;
     }
@@ -39,15 +33,15 @@ public class AgendamentoService {
 
     //projetado para consultar se o horario e dia estara livre (ainda nao foi testado!)
     public void consultaVaga(AgendamentoDTO dto) throws Exception{
-        Agendamento novo = novoAgendamento(dto);
 
-        boolean consultaHora = repository.horaAgendamento(novo.getDataAgendamento(), novo.getHoraAgendamento());
+        List<Agendamento> agendamentos = repository.findAll();
 
-        if(consultaHora){
-            throw new HoraIndisponivelError("Horario indisponivel");
+        for(Agendamento novo : agendamentos){
+          
         }
-    }
 
+        
+    }
 
 }
 
